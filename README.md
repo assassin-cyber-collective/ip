@@ -1,4 +1,3 @@
-FCK IP — ULTRA IP LOOKUP
 
 Advanced IP Intelligence & Network Reconnaissance Tool
 
@@ -654,56 +653,430 @@ FCK IP is intended for:
 
 - Cybersecurity education
 - Authorized security testing
-- Network administration
-- Troubleshooting
-- OSINT research
-- CTF environments
-- Personal lab environments
-- Infrastructure you own
-- Systems where you have explicit authorization
+FCK IP
 
-Only scan systems you own or have permission to test.
+Ultra IP Intelligence & Network Reconnaissance Toolkit
 
-Do not use this tool for unauthorized scanning, harassment, privacy invasion, disruption, or other unlawful activity.
+<p align="center">
+  <b>FCK IP v5.0</b><br>
+  Advanced IP intelligence, network reconnaissance and security analysis toolkit for Termux and Linux.
+</p><p align="center">
+  <img src="https://img.shields.io/badge/Version-5.0-111111?style=for-the-badge">
+  <img src="https://img.shields.io/badge/Python-3.x-111111?style=for-the-badge&logo=python">
+  <img src="https://img.shields.io/badge/Platform-Termux%20%7C%20Linux-111111?style=for-the-badge">
+  <img src="https://img.shields.io/badge/License-MIT-111111?style=for-the-badge">
+</p><p align="center">
+  <b>Powered by ACC — Assassin Cyber Collective</b>
+</p>---
+
+Overview
+
+FCK IP is a terminal-based IP intelligence and network reconnaissance toolkit designed for security research, network troubleshooting, infrastructure analysis and authorized reconnaissance.
+
+It combines multiple information sources and local network utilities into a single interactive command-line interface.
+
+The tool can collect information about an IP address, perform DNS and network analysis, inspect HTTP/HTTPS services, check reputation sources and generate JSON reports.
+
+«Use only on systems, IP addresses and infrastructure that you own or have explicit permission to test.»
 
 ---
 
-Disclaimer
+Features
 
-This project is provided for educational and authorized security-research purposes.
+Module| Capability
+IP Intelligence| Geolocation, ISP, organization and network information
+ASN / BGP| ASN, prefix and routing information
+DNS| Reverse DNS and DNS record analysis
+RDAP| Regional Internet registry information
+WHOIS| Domain/IP registration information
+Threat Intel| Reputation and threat-source checks
+Tor Detection| Tor exit-node checking
+DNSBL| Blacklist checking
+Port Scan| TCP connectivity checks
+Banner Grab| Basic service banner detection
+HTTP/HTTPS| Service and header inspection
+TLS / SSL| Certificate and TLS analysis
+Ping| Network reachability
+Traceroute| Network path analysis
+JSON Reports| Save scan results for later analysis
 
-The author and contributors are not responsible for misuse of this software or for activity performed against systems without proper authorization.
+---
 
-Always obtain appropriate permission before performing reconnaissance or port scanning.
+Requirements
+
+- Android + Termux or Linux
+- Python 3
+- "requests"
+- "dnspython"
+- "whois"
+- "dnsutils"
+- "traceroute"
+- Internet connection
+
+---
+
+Installation
+
+1. Update Termux
+
+pkg update && pkg upgrade -y
+
+2. Install required packages
+
+pkg install python whois dnsutils traceroute -y
+
+3. Install Python dependencies
+
+pip install requests dnspython
+
+4. Run FCK IP
+
+python fckip.py
+
+No "chmod +x" command is required when running the script with Python.
+
+---
+
+Quick Start
+
+git clone https://github.com/assassin-cyber-collective/FCK-IP.git
+cd FCK-IP
+pkg update && pkg upgrade -y
+pkg install python whois dnsutils traceroute -y
+pip install requests dnspython
+python fckip.py
+
+If the repository name or URL changes, use the current repository URL provided by the project.
+
+---
+
+Menu
+
+After launching the tool, you can choose between:
+
+[1] Full Deep Recon
+[2] Quick Scan
+[3] Exit
+
+Full Deep Recon
+
+Performs a broader analysis using the available intelligence, DNS, network, threat and service-analysis modules.
+
+Quick Scan
+
+Performs a faster analysis with the primary IP and network information.
+
+---
+
+Reconnaissance Modules
+
+IP Intelligence
+
+Collects information such as:
+
+- IP address
+- Country
+- Region
+- City
+- ZIP / postal information
+- Latitude / longitude
+- ISP
+- Organization
+- ASN
+- Timezone
+- Network information
+
+Multiple external intelligence sources may be queried to improve coverage.
+
+---
+
+ASN & BGP
+
+The toolkit can query routing and autonomous-system information through available public sources.
+
+Information may include:
+
+- ASN
+- ASN name
+- Network prefix
+- Route information
+- Registry information
+- BGP-related data
+
+---
+
+DNS Analysis
+
+DNS analysis can include:
+
+- Reverse DNS
+- A records
+- AAAA records
+- MX records
+- NS records
+- TXT records
+- CNAME records
+
+---
+
+RDAP
+
+The tool supports Regional Internet Registry RDAP lookups for available IP registration information.
+
+Supported registries include:
+
+ARIN
+RIPE
+APNIC
+LACNIC
+AFRINIC
+
+---
+
+WHOIS
+
+If the required system utility is available, the tool can perform WHOIS lookups for additional registration and ownership information.
+
+---
+
+Threat Intelligence
+
+FCK IP can query available public threat-intelligence sources to check information such as:
+
+- Reputation
+- Abuse reports
+- Suspicious activity
+- Threat indicators
+- Tor exit-node status
+- URL/domain-related intelligence
+
+Results depend on the availability and response of each external service.
+
+---
+
+Port Scanning
+
+The scanner can perform TCP connectivity checks against a collection of common ports.
+
+It may identify:
+
+OPEN
+CLOSED
+TIMEOUT
+ERROR
+
+Basic service banners may also be collected when available.
+
+«Port scanning should only be performed against systems you own or are authorized to test.»
+
+---
+
+HTTP / HTTPS Analysis
+
+The HTTP module can inspect accessible web services and collect information such as:
+
+- HTTP status
+- HTTPS availability
+- Server headers
+- Response headers
+- Basic service information
+
+---
+
+SSL / TLS Analysis
+
+The TLS module can attempt to inspect:
+
+- TLS connectivity
+- Supported TLS versions
+- Certificate information
+- TLS-related connection details
+
+Results can vary depending on the target server and local OpenSSL/Python environment.
+
+---
+
+Ping & Traceroute
+
+Network diagnostics can provide:
+
+- Reachability
+- Response time
+- Network path
+- Intermediate hops
+
+The availability of traceroute depends on the installed system utility and environment.
+
+---
+
+Output & Reports
+
+FCK IP can save reconnaissance results as JSON data.
+
+Example:
+
+reports/
+└── target.json
+
+JSON reports make it easier to:
+
+- Store scan results
+- Review previous reconnaissance
+- Process results with other tools
+- Build your own analysis workflow
+
+---
+
+Project Structure
+
+FCK-IP/
+│
+├── fckip.py
+├── README.md
+└── reports/
+    └── *.json
+
+---
+
+Third-Party Services
+
+FCK IP communicates with various public or third-party services for information retrieval.
+
+Depending on the selected modules, these may include services related to:
+
+- IP geolocation
+- ASN / BGP
+- RDAP
+- Threat intelligence
+- DNS
+- Reputation
+- Network intelligence
+
+Availability, rate limits, API requirements and returned data may change without notice.
+
+Always review the terms and privacy policies of external services before using them in a production or automated environment.
+
+---
+
+Privacy
+
+When performing external lookups, the target IP or related information may be sent to third-party services used by the selected modules.
+
+Do not use the tool with information that you are not authorized to disclose to external services.
+
+---
+
+Ethical Use
+
+FCK IP is intended for legitimate purposes such as:
+
+- Security education
+- Authorized penetration testing
+- Network troubleshooting
+- Infrastructure analysis
+- Defensive security research
+- CTF and laboratory environments
+- Analysis of your own systems
+
+Do not use it to:
+
+- Scan unauthorized systems
+- Attack networks
+- Evade security controls
+- Abuse third-party services
+- Perform unauthorized reconnaissance
+- Violate privacy or applicable laws
+
+You are responsible for how you use this software.
+
+---
+
+Limitations
+
+Results are not guaranteed to be complete or accurate.
+
+Possible limitations include:
+
+- Third-party API downtime
+- Rate limiting
+- Network failures
+- Incomplete geolocation data
+- Missing WHOIS/RDAP information
+- Blocked requests
+- TLS compatibility issues
+- DNS resolution failures
+- Restricted Termux permissions
+- Services requiring API keys
+- Changes to third-party APIs
+
+A result from one intelligence provider should not automatically be treated as definitive.
+
+---
+
+Troubleshooting
+
+"ModuleNotFoundError"
+
+Run:
+
+pip install requests dnspython
+
+"whois: command not found"
+
+Run:
+
+pkg install whois -y
+
+DNS-related errors
+
+Run:
+
+pkg install dnsutils -y
+
+Traceroute unavailable
+
+Run:
+
+pkg install traceroute -y
+
+Permission problems
+
+Make sure Termux has the required network access and that the required packages are installed.
+
+---
+
+Security Notice
+
+This project is a reconnaissance and information-gathering tool.
+
+It does not guarantee the accuracy of third-party intelligence and should not be treated as a replacement for professional security assessment tools or independent verification.
+
+Always obtain proper authorization before testing an external target.
 
 ---
 
 Credits
 
-ULTRA IP LOOKUP v5.0
+Project: FCK IP
+Version: 5.0
+Organization: Assassin Cyber Collective
+Short Name: ACC
 
-Powered by
-ASSASSIN CYBER COLLECTIVE — ACC
-
-Parallel Recon Engine
-Python 3
+Built for security research, learning and authorized network analysis.
 
 ---
 
 License
 
-If you publish this project publicly, add the license that matches how you want others to use, modify, and redistribute the software.
+This project is released under the MIT License.
 
-Example:
-
-MIT License
-
-or provide your own license terms.
+See the "LICENSE" file for the complete license text.
 
 ---
 
-Stay Safe
-
-Scan what you own.
-Test what you are authorized to test.
-Learn responsibly.
+<p align="center">
+  <b>FCK IP v5.0</b><br>
+  IP Intelligence • Network Recon • Security Research
+</p><p align="center">
+  <b>ASSASSIN CYBER COLLECTIVE — ACC</b>
+</p>
